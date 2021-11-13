@@ -42,7 +42,7 @@ jobs:
           host: ${{ secrets.SSH_HOST }}
           username: ${{ secrets.SSH_USER }}
           port: ${{ secrets.SSH_PORT }}
-          envs: DEPLOY_PATH
+          script_stop: true
           script: |
             cd $DEPLOY_PATH
             cd docker
