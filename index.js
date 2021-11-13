@@ -13,5 +13,5 @@ app.use("/", (req, res) => {
   res.json(data);
 });
 
-// ポート：8080
-app.listen(8080);
+// ポート：3000
+app.listen(3000);
