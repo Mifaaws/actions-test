@@ -41,12 +41,11 @@ jobs:
           script_stop: true
           script: |
             cd ~/work/actions-test/docker
-            ls -ltr
             docker-compose down
             docker-compose up -d
             docker exec -u node front rm -rf node_modules package-lock.json
             docker exec -u node front npm install
             docker exec -u node front ls -ltr
-            docker exec -u node front 'nohup npm start &'
+            docker exec -u node -d front nohup npm start
         # env:
         #   DEPLOY_PATH: ${{ secrets.DEPLOY_PATH }}
