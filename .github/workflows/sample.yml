@@ -9,8 +9,6 @@ jobs:
   print-hello-world:
     runs-on: ubuntu-latest
     steps:
-      # - name: execute echo command
-      #   run: echo "Hello World!"
       - name: Checkout
         uses: actions/checkout@v2
       - name: ls
