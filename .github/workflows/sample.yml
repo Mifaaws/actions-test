@@ -23,9 +23,11 @@ jobs:
       - name: Generate ssh key
         run: |
           mkdir ~/.ssh 
-          echo "$SSH_PRIVATE_KEY" > ~/.ssh/id_rsa && chmod 600 ~/.ssh/id_rsa
+          echo "$SSH_PRIVATE_KEY" > ~/.ssh/id_rsa
+          chmod 600 ~/.ssh/id_rsa
         env:
           SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+      - run: ls -ltr
       - name: Deploy
         run: rsync -rlptgoD --delete --exclude ".git/" -e "ssh -i ~/.ssh/id_rsa -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -p ${SSH_PORT}" ./ $SSH_USER@$SSH_HOST:$DEPLOY_PATH
         env:
