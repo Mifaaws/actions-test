@@ -4,7 +4,7 @@ on:
   push:
     branches: 
       - master
-  workflow_dispatch:
+  # workflow_dispatch:
 
 jobs:
   print-hello-world:
@@ -38,7 +38,7 @@ jobs:
       - name: SSH and Deploy
         uses: appleboy/ssh-action@master
         with:
-          key: ~/.ssh/id_rsa
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
           host: ${{ secrets.SSH_HOST }}
           username: ${{ secrets.SSH_USER }}
           port: ${{ secrets.SSH_PORT }}
