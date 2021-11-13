@@ -1,0 +1,18 @@
+version: '3'
+
+# networks:
+#   react_express:
+#     driver: bridge
+
+services:
+  front:
+    build: ./front
+    container_name: front
+    tty: true
+    volumes:
+      - ../:/front
+    working_dir: "/front"
+    ports:
+      - 30001:3000
+    # networks:
+    #   - react_express
