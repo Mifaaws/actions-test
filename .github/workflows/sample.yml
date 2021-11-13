@@ -3,7 +3,6 @@ name: Action Sample
 on:
   push:
     branches: [ master ]
-  # workflow_dispatch:
 
 jobs:
   print-hello-world:
@@ -43,7 +42,6 @@ jobs:
             cd ~/work/actions-test/docker
             ls -ltr
             docker-compose up -d
-            docker exec -u node front ls -ltr
             docker exec -u node front npm install
             docker exec -u node front ls -ltr
             docker exec -u node front npm start &
