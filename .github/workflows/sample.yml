@@ -12,3 +12,7 @@ jobs:
     steps:
       - name: execute echo command
         run: echo "Hello World!"
+      - name: Checkout
+        uses: actions/checkout@v2
+      - run: ls -ltr
+      
