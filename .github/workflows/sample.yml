@@ -45,9 +45,5 @@ jobs:
           script: |
             cd ${DEPLOY_PATH}/docker
             ls -ltr
-            docker-compose up -d
-            docker exec -u node front ls -ltr
-            docker exec -u node front npm install
-            docker exec -u node front ls -ltr
         env:
           DEPLOY_PATH: ${{ secrets.DEPLOY_PATH }}
