@@ -28,6 +28,11 @@ jobs:
           SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
       - name: SCP
         run: scp -i id_rsa -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -P $SSH_PORT ./index.js $SSH_USER@$SSH_HOST:$DEPLOY_PATH
+        env:
+          SSH_USER: ${{ secrets.SSH_USER }}
+          SSH_PORT: ${{ secrets.SSH_PORT }}
+          SSH_HOST: ${{ secrets.SSH_HOST }}
+          DEPLOY_PATH: ${{ secrets.DEPLOY_PATH }}
       - name: Deploy
         run: rsync -rlptgoD --delete --exclude ".git/" -e "ssh -i id_rsa -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -p ${SSH_PORT}" ./ $SSH_USER@$SSH_HOST:$DEPLOY_PATH
         env:
