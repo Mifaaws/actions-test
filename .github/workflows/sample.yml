@@ -44,12 +44,11 @@ jobs:
           port: ${{ secrets.SSH_PORT }}
           script_stop: true
           script: |
-            cd $DEPLOY_PATH
-            cd docker
+            cd ~/work/actions-test/docker
             ls -ltr
             docker-compose up -d
             docker exec -u node front ls -ltr
             docker exec -u node front npm install
             docker exec -u node front ls -ltr
-        env:
-          DEPLOY_PATH: ${{ secrets.DEPLOY_PATH }}
+        # env:
+        #   DEPLOY_PATH: ${{ secrets.DEPLOY_PATH }}
