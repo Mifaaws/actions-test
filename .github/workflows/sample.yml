@@ -44,7 +44,8 @@ jobs:
           port: ${{ secrets.SSH_PORT }}
           envs: DEPLOY_PATH
           script: |
-            cd $DEPLOY_PATH/docker
+            cd $DEPLOY_PATH
+            cd docker
             ls -ltr
             docker-compose up -d
             docker exec -u node front ls -ltr
